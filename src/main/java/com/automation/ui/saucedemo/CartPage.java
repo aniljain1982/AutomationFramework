@@ -27,8 +27,11 @@ public class CartPage extends BasePage {
 	@FindBy(id = "continue-shopping")
 	WebElement btnContinueShopping;
 
+	CartItems carItems;
+
 	public CartPage(WebDriver driver) {
 		super(driver);
+		carItems = new CartItems(cart);
 		WebElementHelper.setWaitTime(60);
 	}
 
@@ -38,32 +41,8 @@ public class CartPage extends BasePage {
 		return initializeCartPage();
 	}
 
-	public CartPojo getCartDetails(String product) throws Exception {
-		WebElement ele = webElementHelper.getElementWithText(cartItems, product).getParentElement().getParentElement()
-				.getWebElement();
-		String price = ele.findElement(By.cssSelector(".inventory_item_price")).getText();
-		String quantity = new WebElementHelper(ele, driver).getPreviousSiblingElement().getWebElement().getText();
-		CartPojo cart = new CartPojo();
-		cart.setProductName(product);
-		cart.setPrice(price);
-		cart.setQuantity(quantity);
-		return cart;
-	}
-
-	public ArrayList<CartPojo> getCart() throws Exception {
-		ArrayList<CartPojo> cartList=new ArrayList<>();
-		for (int i = 0; i < cart.size(); i++) {
-			WebElement ele = cart.get(i);
-			String product = ele.findElement(By.cssSelector(".inventory_item_name")).getText();
-			String price = ele.findElement(By.cssSelector(".inventory_item_price")).getText();
-			String quantity =ele.findElement(By.cssSelector(".cart_quantity")).getText();
-			CartPojo cart = new CartPojo();
-			cart.setProductName(product);
-			cart.setPrice(price);
-			cart.setQuantity(quantity);
-			cartList.add(cart);
-		}
-		return cartList;
+	public ArrayList<CartPojo> getCartItems() throws Exception {
+		return carItems.getCartItems();
 	}
 
 	public CheckoutInformationPage goToCheckoutInformationPage() throws Exception {
