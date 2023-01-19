@@ -11,7 +11,8 @@
     <parameter name="hubURL" value="http://localhost:4444/wd/hub" />
 	<test thread-count="2" name="test" parallel="classes"> 
 		<classes>
-			<class name="com.automation.ui.saucedemo.EndToEnd" />
+			<!--class name="com.automation.ui.saucedemo.EndToEnd" /-->
+			<class name="com.automation.ui.saucedemo.Login" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -26,15 +26,15 @@ public class EndToEnd {
 	CheckoutInformationPage checkoutInformationPage;
 	CheckoutOverViewPage checkoutOverViewPage;
 	CheckoutCompletePage checkoutCompletePage;
-	WebDriverHelper webDriverUtils;
+	WebDriverHelper webDriverHelper;
 	PropertyHelper propertyHelper;
 
 	@BeforeClass
 	@Parameters({ "runParallel", "environment", "browser", "hubURL" })
 	public void setup(String runParallel, String environment, String browser, String hubURL) throws Exception {
-		webDriverUtils = new WebDriverHelper();
-		webDriverUtils.initializeDriver(browser, runParallel);
-		driver = webDriverUtils.getDriver();
+		webDriverHelper = new WebDriverHelper();
+		webDriverHelper.initializeDriver(browser, runParallel);
+		driver = webDriverHelper.getDriver();
 		basePage = new BasePage(driver);
 		propertyHelper = new PropertyHelper(environment, "saucedemo");
 	}

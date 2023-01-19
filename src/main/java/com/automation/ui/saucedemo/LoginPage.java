@@ -17,6 +17,12 @@ public class LoginPage extends BasePage {
 	@FindBy(id = "login-button")
 	WebElement btnLogin;
 
+	@FindBy(css = ".error-message-container")
+	WebElement errorMessage;
+
+	@FindBy(css = ".error-button")
+	WebElement btnError;
+
 	public LoginPage(WebDriver driver) {
 		super(driver);
 		WebElementHelper.setWaitTime(60);
@@ -37,5 +43,13 @@ public class LoginPage extends BasePage {
 		txtPassword.sendKeys(password);
 		btnLogin.click();
 		return initializeProductPage();
+	}
+
+	public String getErrorMessage() throws Exception {
+		if (webElementHelper.checkVisibility(errorMessage)) {
+			return errorMessage.getText();
+		} else {
+			return "";
+		}
 	}
 }
