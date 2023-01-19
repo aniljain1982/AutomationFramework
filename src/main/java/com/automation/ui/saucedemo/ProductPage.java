@@ -19,7 +19,7 @@ public class ProductPage extends BasePage {
 
 	@FindBy(id = "shopping_cart_container")
 	WebElement cartContainer;
-	
+
 	public ProductPage(WebDriver driver) {
 		super(driver);
 		initializeBurgerMenu();
@@ -30,7 +30,7 @@ public class ProductPage extends BasePage {
 		webElementHelper.waitTillElementIsVisible(title);
 		return initializeProductPage();
 	}
-	
+
 	public boolean validateThatOnProductPage() {
 		return webElementHelper.checkVisibility(title);
 	}
@@ -45,6 +45,17 @@ public class ProductPage extends BasePage {
 	public CartPage goToCartPage() throws Exception {
 		webElementHelper.waitTillElementIsClickable(cartContainer).click(cartContainer);
 		return initializeCartPage();
+	}
+
+	public String getProductsInCart() throws Exception {
+		webElementHelper.waitTillElementIsVisible(cartContainer);
+		return cartContainer.getText();
+	}
+	
+	public void removeAddedProductFromCart(String product) throws Exception {
+		webElementHelper.getElementWithText(inventoryItems, product).getParentElement().getParentElement()
+		.getNextSiblingElement().getWebElement().findElement(By.xpath("//button[text()='Remove']"))
+		.click();
 	}
 
 }
