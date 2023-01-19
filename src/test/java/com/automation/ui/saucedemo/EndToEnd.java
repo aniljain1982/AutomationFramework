@@ -75,7 +75,7 @@ public class EndToEnd {
 			cartPage = productPage.goToCartPage().waitForCartPageLoad();
 			Assert.assertEquals(cartPage.title.getText(), "YOUR CART");
 			expectedData.add(product1Cart);
-			assertThat(cartPage.getCart(), is(expectedData));
+			assertThat(cartPage.getCartItems(), is(expectedData));
 			
 			//Checkout Information page
 			checkoutInformationPage = cartPage.goToCheckoutInformationPage().waitForCheckoutInformationPageLoad();
@@ -87,7 +87,7 @@ public class EndToEnd {
 			actualData = new ArrayList<>();
 			expectedData = new ArrayList<>();
 			expectedData.add(product1Cart);
-			for (CartPojo cartPojo : cartPage.getCart()) {
+			for (CartPojo cartPojo : cartPage.getCartItems()) {
 				actualData.add(cartPojo);
 			}
 			expectedData.add(product_1.get("card"));
@@ -161,7 +161,7 @@ public class EndToEnd {
 			Assert.assertEquals(cartPage.title.getText(), "YOUR CART");
 			expectedData.add(product1Cart);
 			expectedData.add(product2Cart);
-			assertThat(cartPage.getCart(), is(expectedData));
+			assertThat(cartPage.getCartItems(), is(expectedData));
 			
 			//Checkout Information page
 			checkoutInformationPage = cartPage.goToCheckoutInformationPage().waitForCheckoutInformationPageLoad();
@@ -174,7 +174,7 @@ public class EndToEnd {
 			expectedData = new ArrayList<>();
 			expectedData.add(product1Cart);
 			expectedData.add(product2Cart);
-			for (CartPojo cartPojo : cartPage.getCart()) {
+			for (CartPojo cartPojo : cartPage.getCartItems()) {
 				actualData.add(cartPojo);
 			}
 			expectedData.add(product.get("card"));
@@ -252,20 +252,20 @@ public class EndToEnd {
 			Assert.assertEquals(cartPage.title.getText(), "YOUR CART");
 			expectedData.add(product1Cart);
 			expectedData.add(product2Cart);
-			assertThat(cartPage.getCart(), is(expectedData));
+			assertThat(cartPage.getCartItems(), is(expectedData));
 			
 			//remove a product
 			cartPage.removeItemFromCart(product1Cart.getProductName());
 			expectedData = new ArrayList<>();
 			expectedData.add(product2Cart);
-			assertThat(cartPage.getCart(), is(expectedData));
+			assertThat(cartPage.getCartItems(), is(expectedData));
 			
 			//continue shopping
 			productPage = cartPage.gotBackToProductPage().waitForProductPageLoad();
 			productPage.AddProductToCart(product1Cart.getProductName());
 			cartPage = productPage.goToCartPage().waitForCartPageLoad();
 			expectedData.add(product1Cart);
-			assertThat(cartPage.getCart(), is(expectedData));
+			assertThat(cartPage.getCartItems(), is(expectedData));
 			
 			//Checkout Information page
 			checkoutInformationPage = cartPage.goToCheckoutInformationPage().waitForCheckoutInformationPageLoad();
@@ -278,7 +278,7 @@ public class EndToEnd {
 			expectedData = new ArrayList<>();
 			expectedData.add(product2Cart);
 			expectedData.add(product1Cart);
-			for (CartPojo cartPojo : cartPage.getCart()) {
+			for (CartPojo cartPojo : cartPage.getCartItems()) {
 				actualData.add(cartPojo);
 			}
 			expectedData.add(product.get("card"));

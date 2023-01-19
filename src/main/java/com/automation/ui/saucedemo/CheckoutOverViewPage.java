@@ -3,7 +3,6 @@ package com.automation.ui.saucedemo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,16 +16,16 @@ public class CheckoutOverViewPage extends BasePage {
 
 	@FindBy(id = "finish")
 	WebElement btnFinish;
-	
+
 	@FindBy(id = "cancel")
 	WebElement btnCancel;
 
 	@FindBy(css = ".inventory_item_name")
 	List<WebElement> cartItems;
-	
+
 	@FindBy(css = ".cart_item")
 	List<WebElement> cart;
-	
+
 	@FindBy(css = ".summary_info")
 	WebElement summaryInfo;
 
@@ -45,8 +44,11 @@ public class CheckoutOverViewPage extends BasePage {
 	@FindBy(xpath = "//div[text()='Shipping Information:']")
 	WebElement shipping;
 
+	CartItems carItems;
+
 	public CheckoutOverViewPage(WebDriver driver) {
 		super(driver);
+		carItems = new CartItems(cart);
 		initializeBurgerMenu();
 	}
 
@@ -60,33 +62,8 @@ public class CheckoutOverViewPage extends BasePage {
 		return initializeCheckoutOverViewPage();
 	}
 
-	public CartPojo getCartDetails(String product) throws Exception {
-		WebElement ele = webElementHelper.getElementWithText(cartItems, product).getParentElement().getParentElement()
-				.getWebElement();
-		String price = ele.findElement(By.cssSelector(".inventory_item_price")).getText();
-		String quantity = new WebElementHelper(ele, driver).getPreviousSiblingElement().getWebElement().getText();
-		CartPojo cart = new CartPojo();
-		cart.setProductName(product);
-		cart.setPrice(price);
-		cart.setQuantity(quantity);
-		return cart;
-	}
-	
-	public ArrayList<CartPojo> getCart() throws Exception {
-		ArrayList<CartPojo> cartList=new ArrayList<>();
-		for (int i = 0; i < cart.size(); i++) {
-			WebElement ele = cart.get(i);
-			String product = ele.findElement(By.cssSelector(".inventory_item_name")).getText();
-			String price = ele.findElement(By.cssSelector(".inventory_item_price")).getText();
-			String quantity =ele.findElement(By.cssSelector(".cart_quantity")).getText();
-			CartPojo cart = new CartPojo();
-			cart.setProductName(product);
-			cart.setPrice(price);
-			cart.setQuantity(quantity);
-			cartList.add(cart);
-		}
-		return cartList;
-
+	public ArrayList<CartPojo> getCartItems() throws Exception {
+		return carItems.getCartItems();
 	}
 
 	public String getPaymentInfo() throws Exception {
@@ -108,8 +85,8 @@ public class CheckoutOverViewPage extends BasePage {
 	public String getTax() throws Exception {
 		return tax.getText();
 	}
-	
-	public ProductPage backToProductPage() throws Exception{
+
+	public ProductPage backToProductPage() throws Exception {
 		webElementHelper.waitTillElementIsVisible(btnCancel).click(btnCancel);
 		return initializeProductPage();
 	}
