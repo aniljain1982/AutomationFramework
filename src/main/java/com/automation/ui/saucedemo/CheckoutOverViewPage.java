@@ -44,11 +44,8 @@ public class CheckoutOverViewPage extends BasePage {
 	@FindBy(xpath = "//div[text()='Shipping Information:']")
 	WebElement shipping;
 
-	CartItems carItems;
-
 	public CheckoutOverViewPage(WebDriver driver) {
 		super(driver);
-		carItems = new CartItems(cart);
 		initializeBurgerMenu();
 	}
 
@@ -63,7 +60,7 @@ public class CheckoutOverViewPage extends BasePage {
 	}
 
 	public ArrayList<CartPojo> getCartItems() throws Exception {
-		return carItems.getCartItems();
+		return new CartItems().getCartItems(cart);
 	}
 
 	public String getPaymentInfo() throws Exception {

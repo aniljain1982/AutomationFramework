@@ -7,13 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class CartItems {
-	private List<WebElement> cartItems;
 
-	public CartItems(List<WebElement> lstElements) {
-		this.cartItems = lstElements;
-	}
-
-	public ArrayList<CartPojo> getCartItems() throws Exception {
+	public ArrayList<CartPojo> getCartItems(List<WebElement> cartItems) throws Exception {
 		ArrayList<CartPojo> cartList = new ArrayList<>();
 		for (int i = 0; i < cartItems.size(); i++) {
 			WebElement ele = cartItems.get(i);
