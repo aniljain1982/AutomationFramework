@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Sauce Demo Test Automation">
+
+	<listeners>
+		<listener class-name="com.automation.listener.TestNGListener" />
+	</listeners>
+	<parameter name="runParallel" value="true" />
+    <parameter name="environment" value="config.properties" />
+    <parameter name="browser" value="Chrome" />
+    <parameter name="hubURL" value="http://localhost:4444/wd/hub" />
+	<test thread-count="2" name="test" parallel="classes"> 
+		<classes>
+			<class name="com.automation.ui.saucedemo.EndToEnd" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

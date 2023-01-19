@@ -1,0 +1,31 @@
+{
+	"EndToEndOneProduct": {
+		"productName": "Sauce Labs Backpack",
+		"price": "$29.99",
+		"quantity": "1",
+		"firstName":"first_name",
+		"lastName":"last_name",
+		"postalCode":"123456",
+		"card": "SauceCard #31337",
+		"shipping": "FREE PONY EXPRESS DELIVERY!",
+		"itemTotal": "Item total: $29.99",
+		"tax": "Tax: $2.40",
+		"total":"Total: $32.39"
+	},
+	"EndToEndTwoProduct": {
+		"productName1": "Sauce Labs Backpack",
+		"price1": "$29.99",
+		"quantity1": "1",
+		"productName2": "Sauce Labs Bike Light",
+		"price2": "$9.99",
+		"quantity2": "1",
+		"firstName":"first_name",
+		"lastName":"last_name",
+		"postalCode":"123456",
+		"card": "SauceCard #31337",
+		"shipping": "FREE PONY EXPRESS DELIVERY!",
+		"itemTotal": "Item total: $39.98",
+		"tax": "Tax: $3.20",
+		"total":"Total: $43.18"
+	}
+}
