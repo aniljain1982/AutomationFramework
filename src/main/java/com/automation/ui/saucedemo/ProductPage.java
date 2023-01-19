@@ -31,7 +31,7 @@ public class ProductPage extends BasePage {
 		return initializeProductPage();
 	}
 	
-	public boolean validateThatOnLoginPage() {
+	public boolean validateThatOnProductPage() {
 		return webElementHelper.checkVisibility(title);
 	}
 
