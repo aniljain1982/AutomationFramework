@@ -27,11 +27,8 @@ public class CartPage extends BasePage {
 	@FindBy(id = "continue-shopping")
 	WebElement btnContinueShopping;
 
-	CartItems carItems;
-
 	public CartPage(WebDriver driver) {
 		super(driver);
-		carItems = new CartItems(cart);
 		WebElementHelper.setWaitTime(60);
 	}
 
@@ -42,7 +39,7 @@ public class CartPage extends BasePage {
 	}
 
 	public ArrayList<CartPojo> getCartItems() throws Exception {
-		return carItems.getCartItems();
+		return new CartItems().getCartItems(cart);
 	}
 
 	public CheckoutInformationPage goToCheckoutInformationPage() throws Exception {
