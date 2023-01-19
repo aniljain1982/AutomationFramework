@@ -6,7 +6,7 @@ Note: Update chromedriver.exe under src/main/resources if browser version is cha
 Usages:
 1.	Clone this repo
 2.	Open Eclipse ide (add testNG plugin and use Java 11)
-3.	Import as exiting maven project 
+3.	Import as existing maven project 
 
 UI: https://www.saucedemo.com/ 
 1.	Right click on “testng_saucedemo.xml” and Run as TestNG Suite
