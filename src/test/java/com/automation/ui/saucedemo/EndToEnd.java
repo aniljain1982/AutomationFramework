@@ -39,6 +39,17 @@ public class EndToEnd {
 		propertyHelper = new PropertyHelper(environment, "saucedemo");
 	}
 
+	/**
+	 *  1.	Launch https://www.saucedemo.com/
+		2.	Login to app
+		3.	Add a product
+		4.	Go to cart page and verify cart items
+		5.	Go to checkout information page and add customer details
+		6.	Go to checkout overview page and verify the cart items
+		7.	Go to checkout complete page and verify dispatch message
+		8.	Go back to product page
+		9.	Logout
+	 */
 	@Test
 	public void endToEndOneProduct() {
 		try {
@@ -109,6 +120,17 @@ public class EndToEnd {
 
 	}
 	
+	/**
+	 *  1.	Launch https://www.saucedemo.com/
+		2.	Login to app
+		3.	Add two products
+		4.	Go to cart page and verify cart items
+		5.	Go to checkout information page and add customer details
+		6.	Go to checkout overview page and verify the cart items
+		7.	Go to checkout complete page and verify dispatch message
+		8.	Go back to product page
+		9.	Logout
+	 */
 	@Test
 	public void endToEndTwoProduct() {
 		try {
@@ -152,7 +174,6 @@ public class EndToEnd {
 			expectedData = new ArrayList<>();
 			expectedData.add(product1Cart);
 			expectedData.add(product2Cart);
-			//actualData.add(checkoutOverViewPage.getCart());
 			for (CartPojo cartPojo : cartPage.getCart()) {
 				actualData.add(cartPojo);
 			}
@@ -186,6 +207,21 @@ public class EndToEnd {
 
 	}
 	
+	/**
+	 *  1.	Launch https://www.saucedemo.com/
+		2.	Login to app
+		3.	Add two product
+		4.	Go to cart page and verify cart items
+		5.  Remove a product and verify cart items
+		6.  Go to back to product page
+		7.  Add a product
+		8.	Go to cart page and verify cart items
+		9.	Go to checkout information page and add customer details
+		10.	Go to checkout overview page and verify the cart items
+		11.	Go to checkout complete page and verify dispatch message
+		12.	Go back to product page
+		13.	Logout
+	 */
 	@Test
 	public void endToEndRemoveProduct() {
 		try {
@@ -242,7 +278,6 @@ public class EndToEnd {
 			expectedData = new ArrayList<>();
 			expectedData.add(product2Cart);
 			expectedData.add(product1Cart);
-			//actualData.add(checkoutOverViewPage.getCart());
 			for (CartPojo cartPojo : cartPage.getCart()) {
 				actualData.add(cartPojo);
 			}
