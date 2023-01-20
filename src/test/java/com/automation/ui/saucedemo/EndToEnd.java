@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.automation.customexception.CustomException;
 import com.automation.helper.JsonHelper;
 import com.automation.helper.PropertyHelper;
 import com.automation.selenium.WebDriverHelper;
@@ -51,7 +52,7 @@ public class EndToEnd {
 		9.	Logout
 	 */
 	@Test
-	public void endToEndOneProduct() {
+	public void endToEndOneProduct() throws Exception{
 		try {
 			//Login page
 			loginPage = basePage.navigateToLoginPage(propertyHelper.getPropertyValue("sauceUrl"));
@@ -115,7 +116,7 @@ public class EndToEnd {
 			loginPage=productPage.getBurgerMenu().logout().waitForLoginPageLoad();
 			Assert.assertTrue(loginPage.validateThatOnLoginPage());
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new CustomException(e, driver);
 		}
 
 	}
@@ -132,7 +133,7 @@ public class EndToEnd {
 		9.	Logout
 	 */
 	@Test
-	public void endToEndTwoProduct() {
+	public void endToEndTwoProduct()  throws Exception{
 		try {
 			//Login page
 			loginPage = basePage.navigateToLoginPage(propertyHelper.getPropertyValue("sauceUrl"));
@@ -202,7 +203,7 @@ public class EndToEnd {
 			loginPage=productPage.getBurgerMenu().logout().waitForLoginPageLoad();
 			Assert.assertTrue(loginPage.validateThatOnLoginPage());
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new CustomException(e, driver);
 		}
 
 	}
@@ -223,7 +224,7 @@ public class EndToEnd {
 		13.	Logout
 	 */
 	@Test
-	public void endToEndRemoveProduct() {
+	public void endToEndRemoveProduct()  throws Exception{
 		try {
 			//Login page
 			loginPage = basePage.navigateToLoginPage(propertyHelper.getPropertyValue("sauceUrl"));
@@ -306,7 +307,7 @@ public class EndToEnd {
 			loginPage=productPage.getBurgerMenu().logout().waitForLoginPageLoad();
 			Assert.assertTrue(loginPage.validateThatOnLoginPage());
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new CustomException(e, driver);
 		}
 
 	}

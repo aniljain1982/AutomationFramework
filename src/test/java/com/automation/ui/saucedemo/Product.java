@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.automation.customexception.CustomException;
 import com.automation.helper.JsonHelper;
 import com.automation.helper.PropertyHelper;
 import com.automation.selenium.WebDriverHelper;
@@ -34,7 +35,7 @@ public class Product {
 	}
 	
 	@Test
-	public void validateCart() {
+	public void validateCart()  throws Exception{
 		try {
 			// Login page
 			loginPage = basePage.navigateToLoginPage(propertyHelper.getPropertyValue("sauceUrl"));
@@ -62,7 +63,7 @@ public class Product {
 			Assert.assertEquals(productPage.getProductsInCart(), "1");
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new CustomException(e, driver);
 		}
 	}
 	
