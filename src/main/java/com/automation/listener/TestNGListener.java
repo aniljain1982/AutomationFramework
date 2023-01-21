@@ -28,7 +28,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 public class TestNGListener implements ITestListener, IReporter, ISuiteListener {
 	SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	public String OUTPUT_FOLDER = "TEST-OUTPUT" + File.separator;
-	public String FILE_NAME = "AutomationTestReport";
+	public String FILE_NAME = "TestReport";
 	public ExtentReports extent;
 
 	@Override

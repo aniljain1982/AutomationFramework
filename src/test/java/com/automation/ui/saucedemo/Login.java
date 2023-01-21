@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.automation.customexception.CustomException;
 import com.automation.helper.PropertyHelper;
 import com.automation.selenium.WebDriverHelper;
 
@@ -34,7 +35,7 @@ public class Login {
 	 * Valid Credentials
 	 */
 	@Test
-	public void validCredentials() {
+	public void validCredentials() throws Exception{
 		try {
 			// Login page
 			loginPage = basePage.navigateToLoginPage(propertyHelper.getPropertyValue("sauceUrl"));
@@ -43,7 +44,7 @@ public class Login {
 					propertyHelper.getPropertyValue("saucePassowrd")).waitForProductPageLoad();
 			Assert.assertTrue(productPage.validateThatOnProductPage());
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new CustomException(e, driver);
 		}
 	}
 
@@ -51,7 +52,7 @@ public class Login {
 	 * invalid Credentials
 	 */
 	@Test
-	public void invalidCredentials() {
+	public void invalidCredentials() throws Exception{
 		try {
 			// Login page
 			loginPage = basePage.navigateToLoginPage(propertyHelper.getPropertyValue("sauceUrl"));
@@ -60,7 +61,7 @@ public class Login {
 					"invalidPassword");
 			Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username and password do not match any user in this service");
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new CustomException(e, driver);
 		}
 	}
 
