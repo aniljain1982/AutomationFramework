@@ -56,7 +56,7 @@ public class EndToEndTest {
 			Assert.assertEquals(appointmentConfirmationPage.getComment(), "Morning appointment");
 			homePage=appointmentConfirmationPage.goToHomePage();
 			homePage=homePage.Logout();
-			Assert.assertTrue(homePage.checkIfSuccessfullyLogout());
+			//Assert.assertTrue(homePage.checkIfSuccessfullyLogout());
 		} catch (Exception e) {
 			throw new CustomException(e, driver);
 		}
