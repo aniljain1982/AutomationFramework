@@ -6,6 +6,4 @@ public class JavaHelper {
 	public static long generateRandomNumber() {
 		return Instant.now().toEpochMilli();
 	}
-
-	
 }
