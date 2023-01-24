@@ -11,3 +11,11 @@ Usages:
 UI: https://www.saucedemo.com/ 
 1.	Right click on “testng_saucedemo.xml” and Run as TestNG Suite
 2.	Extent generates in test_output folder
+
+UI: https://katalon-demo-cura.herokuapp.com/
+1.	Right click on “testng_cura.xml” and Run as TestNG Suite
+2.	Extent generates in test_output folder
+
+API: https://restful-booker.herokuapp.com
+1.	Right click on “testng_herokuapp.xml” and Run as TestNG Suite
+2.	Extent generates in test_output folder
