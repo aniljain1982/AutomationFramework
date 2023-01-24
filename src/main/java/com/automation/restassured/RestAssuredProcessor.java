@@ -12,7 +12,7 @@ import io.restassured.specification.SpecificationQuerier;
 
 public class RestAssuredProcessor {
 	private Response response;
-	
+
 	public Response getResponse() {
 		return response;
 	}
@@ -25,28 +25,31 @@ public class RestAssuredProcessor {
 		Response response = null;
 		RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
 
-		String[] supportedApiMethod = { "POST", "GET", "DELETE", "PUT" };
-		
-		if(!requestMap.containsKey("BaseUri")) {
+		String[] supportedApiMethod = { "POST", "GET", "DELETE", "PUT", "PATCH" };
+
+		if (!requestMap.containsKey("BaseUri")) {
 			throw new Exception("Request map does not have Base Uri");
 		}
-		if(!requestMap.containsKey("BasePath")) {
+		if (!requestMap.containsKey("BasePath")) {
 			throw new Exception("Request map does not have Base Path");
 		}
-		if(!requestMap.containsKey("RequestMethod")) {
+		if (!requestMap.containsKey("RequestMethod")) {
 			throw new Exception("Request map does not have Request Method");
 		}
-		
+
 		String requestMethod = requestMap.get("RequestMethod").toString().toUpperCase();
 		if (!Arrays.asList(supportedApiMethod).contains(requestMethod)) {
 			throw new Exception("Unsopported Api method: " + requestMethod);
 		}
-		
+
 		requestSpecBuilder.setBaseUri(requestMap.get("BaseUri").toString());
 		requestSpecBuilder.setBasePath(requestMap.get("BasePath").toString());
 
 		if (requestMap.containsKey("Header")) {
 			requestSpecBuilder.addHeaders((Map) requestMap.get("Header"));
+		}
+		if (requestMap.containsKey("Params")) {
+			requestSpecBuilder.addParams((Map) requestMap.get("Params"));
 		}
 		if (requestMap.containsKey("PathParams")) {
 			requestSpecBuilder.addPathParams((Map) requestMap.get("PathParams"));
@@ -64,10 +67,11 @@ public class RestAssuredProcessor {
 		System.out.println("Base Path: " + queryRequest.getBasePath());
 		System.out.println("Method: " + queryRequest.getMethod());
 		System.out.println("Herader: " + queryRequest.getHeaders());
-		System.out.println("Path Path: " + queryRequest.getPathParams());
-		System.out.println("Query Param: " + queryRequest.getQueryParams());
-		System.out.println("Form Param: " + queryRequest.getFormParams());
-		System.out.println("MultiPart Param: " + queryRequest.getMultiPartParams());
+		System.out.println("Params : " + queryRequest.getNamedPathParams());
+		System.out.println("Path Params: " + queryRequest.getPathParams());
+		System.out.println("Query Params: " + queryRequest.getQueryParams());
+		System.out.println("Form Params: " + queryRequest.getFormParams());
+		System.out.println("MultiPart Params: " + queryRequest.getMultiPartParams());
 		System.out.println("Body: " + queryRequest.getBody());
 
 		switch (requestMethod) {
@@ -86,6 +90,10 @@ public class RestAssuredProcessor {
 		}
 		case "PUT": {
 			response = RestAssured.expect().given().spec(requestSpec).put();
+			break;
+		}
+		case "PATCH": {
+			response = RestAssured.expect().given().spec(requestSpec).patch();
 			break;
 		}
 		}
