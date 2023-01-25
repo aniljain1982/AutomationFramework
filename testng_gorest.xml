@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Rest Api Test">
+<suite name="Go Rest Api Test">
 
 	<listeners>
 		<listener class-name="com.automation.listener.TestNGListener" />
 	</listeners>
 	<test thread-count="2" name="test" parallel="classes"> 
 		<classes>
-			<class name="com.automation.api.gorest.GoRestTest02" />
+			<class name="com.automation.api.gorest.GoRestTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
