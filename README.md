@@ -19,3 +19,7 @@ UI: https://katalon-demo-cura.herokuapp.com/
 API: https://restful-booker.herokuapp.com
 1.	Right click on “testng_herokuapp.xml” and Run as TestNG Suite
 2.	test report generates in test_output folder
+
+API: https://gorest.co.in
+1.	Right click on “testng_gorest.xml” and Run as TestNG Suite
+2.	test report generates in test_output folder
