@@ -22,8 +22,12 @@ public class AuthApi extends BaseApi {
 		request.put("Payload", createAuthPayload());
 		return processRequest();
 	}
-	
-	public static void main(String[] args) throws Exception{
+
+	public AuthPojo createAuthPayload(String username, String pasword) {
+		return AuthPojo.builder().username(username).password("pasword").build();
+	}
+
+	public static void main(String[] args) throws Exception {
 		System.out.println(new AuthApi().genrateToken().getStatusCode());
 	}
 
