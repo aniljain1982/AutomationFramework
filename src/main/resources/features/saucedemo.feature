@@ -16,15 +16,15 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-Feature: Auth
-  Auth api test
 
-  Scenario Outline: Get the auth token
-    Given Get the API "<BasePath>"
-    And Create a AuthPojo with "<username>" and "<password>"
-    When Make a Rest Call with "<Method>" method
-    Then Verify if the status code is "<StatusCode>"
+Feature: Login
+  Test Login functionality
+
+  Scenario Outline: Login to application with valid user name and password
+    Given User is on login page
+    When The user logins to app with username as "<username>" and password as "<password>"
+    Then The user should login successfully and is brought to the inventory page
 
     Examples: 
-      | BasePath | Method | StatusCode | username | password
-      | auth     | POST   |        200 | admin | password123
+      | username      | password     |
+      | standard_user | secret_sauce |

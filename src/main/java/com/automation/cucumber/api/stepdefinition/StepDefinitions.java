@@ -23,7 +23,6 @@ public class StepDefinitions extends BaseApi{
     	  request.put("RequestMethod", method);
           response=processRequest();
           System.out.println("************ Response Body Start *****************");
-          //response.prettyPrint();
           response.getBody().print();
           System.out.println("************ Response Body End *******************");
     }

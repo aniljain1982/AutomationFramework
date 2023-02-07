@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "./src/main/resources/features/EOE_Cura.feature",
+@CucumberOptions(features = "./src/main/resources/features/herokuapp.feature",
 
  glue = "com.automation.cucumber.api.stepdefinition" )
 
