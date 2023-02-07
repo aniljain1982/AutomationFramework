@@ -1,5 +1,5 @@
 # AutomationFramework
-This framework is built for UI and API testing using Java, Selenium, RestAssured, TestNG, Maven and Extent report.
+This framework is built for UI and API testing using Java, Selenium, RestAssured, Cucumber, TestNG, Maven and Extent report.
 
 Note: Chrome browser version should be compatible with chromedriver. Update driver at src/main/resources folder.
 
@@ -14,7 +14,7 @@ UI: https://www.saucedemo.com/
 
 UI: https://katalon-demo-cura.herokuapp.com/
 1.	Right click on “testng_cura.xml” and Run as TestNG Suite
-2.	vtest report generates in test_output folder
+2.	test report generates in test_output folder
 
 API: https://restful-booker.herokuapp.com
 1.	Right click on “testng_herokuapp.xml” and Run as TestNG Suite
@@ -23,3 +23,7 @@ API: https://restful-booker.herokuapp.com
 API: https://gorest.co.in
 1.	Right click on “testng_gorest.xml” and Run as TestNG Suite
 2.	test report generates in test_output folder
+
+Cucumber: https://www.saucedemo.com/ 
+1.	Right click on “testng_saucedemo_runner.xml” and Run as TestNG Suite
+2.	test report generates in test_output folder 
