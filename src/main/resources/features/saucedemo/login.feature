@@ -16,15 +16,24 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-
 Feature: Login
   Test Login functionality
 
-  Scenario Outline: Login to application with valid user name and password
+  Background: 
     Given User is on login page
+
+  Scenario Outline: Login to application with valid user name and password
     When The user logins to app with username as "<username>" and password as "<password>"
-    Then The user should login successfully and is brought to the inventory page
+    Then The user should login successfully and is brought to the product page
 
     Examples: 
       | username      | password     |
       | standard_user | secret_sauce |
+
+  Scenario Outline: Login to application with valid user name and invalid password
+    When The user logins to app with username as "<username>" and password as "<password>"
+    Then The user should to get a error message "Epic sadface: Username and password do not match any user in this service"
+
+    Examples: 
+      | username      | password |
+      | standard_user | invalid  |
