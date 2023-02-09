@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
 		// Features
-		features = { "./src/main/resources/features/saucedemo/login.feature",
+		features = {"./src/main/resources/features/saucedemo/login.feature",
 				"./src/main/resources/features/saucedemo/EOE.feature" },
 
 		// Glue
@@ -15,8 +15,8 @@ import io.cucumber.testng.CucumberOptions;
 				"rerun:target/rerun.txt" }, tags = "not @smoke", monochrome = true
 
 )
-public class SauceDemoRunner extends AbstractTestNGCucumberTests {
 
+public class SauceDemoRunner extends AbstractTestNGCucumberTests {
 	@Override
 	@DataProvider()
 	public Object[][] scenarios() {
