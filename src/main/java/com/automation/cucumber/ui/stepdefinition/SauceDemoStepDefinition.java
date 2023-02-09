@@ -5,11 +5,8 @@ import static org.hamcrest.Matchers.is;
 
 import java.util.ArrayList;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import com.automation.selenium.WebDriverHelper;
-import com.automation.ui.saucedemo.BasePage;
 import com.automation.ui.saucedemo.CartPage;
 import com.automation.ui.saucedemo.CartPojo;
 import com.automation.ui.saucedemo.CheckoutCompletePage;
@@ -19,30 +16,18 @@ import com.automation.ui.saucedemo.LoginPage;
 import com.automation.ui.saucedemo.ProductPage;
 
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class SauceDemoStepDefinition {
-	WebDriver driver;
-	WebDriverHelper webDriverHelper;
+public class SauceDemoStepDefinition extends BaseStepDefinition {
 
-	BasePage basePage;
 	LoginPage loginPage;
 	ProductPage productPage;
 	CartPage cartPage;
 	CheckoutInformationPage checkoutInformationPage;
 	CheckoutOverViewPage checkoutOverViewPage;
 	CheckoutCompletePage checkoutCompletePage;
-
-	@Before
-	public void setup() throws Exception {
-		webDriverHelper = new WebDriverHelper();
-		webDriverHelper.initializeDriver("Chrome", "false");
-		driver = webDriverHelper.getDriver();
-		basePage = new BasePage(driver);
-	}
 
 	@After
 	public void tearDown() throws Exception {
@@ -115,7 +100,7 @@ public class SauceDemoStepDefinition {
 			String itemTotal, String tax, String total) throws Exception {
 		ArrayList<Object> actualData = new ArrayList<>();
 		ArrayList<Object> expectedData = new ArrayList<>();
-		
+
 		CartPojo product1Cart = new CartPojo();
 		product1Cart.setProductName(product);
 		product1Cart.setPrice(price);
@@ -126,7 +111,7 @@ public class SauceDemoStepDefinition {
 		expectedData.add(itemTotal);
 		expectedData.add(tax);
 		expectedData.add(total);
-		
+
 		for (CartPojo cartPojo : cartPage.getCartItems()) {
 			actualData.add(cartPojo);
 		}
@@ -140,7 +125,7 @@ public class SauceDemoStepDefinition {
 
 	@Then("user navigates to checkout complete page")
 	public void user_navigates_to_checkout_complete_page() throws Exception {
-		checkoutCompletePage=checkoutOverViewPage.goToCheckoutCompletePage().waitForCheckoutCompletePageLoad();
+		checkoutCompletePage = checkoutOverViewPage.goToCheckoutCompletePage().waitForCheckoutCompletePageLoad();
 	}
 
 }
